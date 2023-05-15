@@ -1,6 +1,6 @@
 # Microservices Architecture with Docker and K8
 
-## what are Microservices
+## What are Microservices
 
 Microservices is a type of pplication architecture where a collection of independent services communicate through a well defined API.
 
@@ -23,7 +23,7 @@ With microservices each process runs individually, means if one process fails or
 
 Docker is a software platform that allows you to build, test, and deploy applications quickly. Docker packages software into standardized units called containers that have everything the software needs to run including libraries, system tools, code, and runtime. Using Docker allows you to quickly deploy and scale applications into any environment and know that code will run.
 
-## What is containerization?
+## What is Containerization?
 
 Containerization is a softwrae deployment process that bundles an application's code with all the files and dependancies (such as libraries) it needs to run on any infrastructure. For example, to run an application on Windows you might need to install a software package on a Windows machine. However, with containerization it will create a single package, knows as container, that can run on all types of devices and operating systems.
 
