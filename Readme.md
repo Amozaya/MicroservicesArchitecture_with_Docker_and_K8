@@ -2,6 +2,8 @@
 
 ## What are Microservices
 
+![Microservices diagram](resources/microservices_diagram.JPG)
+
 Microservices is a type of pplication architecture where a collection of independent services communicate through a well defined API.
 
 Microservices architectures make applications easier to scale and faster to develop, enabling innovation and accelerating time-to-market for new features.
