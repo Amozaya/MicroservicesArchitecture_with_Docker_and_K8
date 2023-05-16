@@ -43,3 +43,48 @@ Benefits:
 Virtualization or VM is a digital copy of the host machine, with it's own dedicated computing resources and OS, managed by Hypervisor. 
 
 Containainerization is an improved concept of VM, where it doesn't require an OS layer inside the container. It allows the application to run independently from the host OS, as container already contains all the required resources it needs to run the application. Also due to container's lightweight it prevents resource waste.
+
+
+
+## Using docker to pull an Image from registry and launch the container
+
+![Docker structure](resources/docker_structure.JPG)
+
+`Docker pull` - it pulls an image from the DockerHub registry to our local repository so it can be accessed quicker
+`Docker build` - it builds an image localy
+`Docker run` - it checks if the image is available locally, if not it will pull it from the registry, and then it will build it and run it
+
+
+### To run the container
+1. Use GitBash terminal
+2. `docker run hello-world` -  test a connection with docker registry
+
+3. `docker images` - list of the images locally
+
+4. `docker run -d -p 80:80 nginx` - run an nginx image on port 80 on our local host:
+    * `-d` - run on the background
+    * `-p` - port
+
+Once container is running you can go to the `localhost` page in your browser to check if the nginx is running
+
+5. `docker ps` - check active containers
+
+6. `docker stop <ps_id>` - stop container
+
+7. `docker start <ps_id>` - start container
+
+8. `docker rm <ps_id> -f` - terminate container, where `-f` is optional as it forces the command
+
+9. `alias docker="winpty docker"` - create alias with docker
+
+10. `docker exec -it 201d5464c0f2 sh` - connect to the container using shell `sh`. `exec -it` means interactive mode
+
+11. `cd /usr/share/nginx/html` - nagivate inside the html folder
+
+12. `apt-get update -y` - do updates
+13. `apt-get upgrade -y` - do upgrades
+14. `apt-get install sudo -y` - install sudo
+15. `sudo apt install nano -y` - install nano
+16. `sudo nano index.html` - open index.html page
+17. Change the `h1` heading and save the file
+18. Refresh the browser to see a new h1 heading
