@@ -59,7 +59,7 @@ Containainerization is an improved concept of VM, where it doesn't require an OS
 
 ### To run the container
 1. Use GitBash terminal
-2. `docker run hello-world` -  test a connection with docker registry
+2. `docker run hello-world` -  test a connection with docker registry by pulling and running a simple "hello-world" image
 
 3. `docker images` - list of the images locally
 
@@ -90,3 +90,20 @@ Once container is running you can go to the `localhost` page in your browser to 
 16. `sudo nano index.html` - open index.html page
 17. Change the `h1` heading and save the file
 18. Refresh the browser to see a new h1 heading
+
+
+### Create a profile page on Nginx and push it to DockerHub
+
+1. Create a new `index.html` file. Change `<body>` to have some paragraph about you.
+2. Run a docker image with nginx installed
+3. Use `docker cp index.html <container_id>:usr/share/nginx/html`. To copy your `index.html` page. Make sure you are in the same directory as your file, or you have to write a full path
+4. Refresh your `localhost` to ensure that it's updated
+5. `docker commit <image-id> olegf23:nginx-profile-01` - create an image based on the container
+6.  You can use `docker images` to check what images you have locally
+7. Create a new repository on the DockerHub
+8. Use `docker login` to log in to your DocHub through Bash terminal
+9. Tag your image with a proper name and to your repository `docker tag olegf23:nginx-profile-01 olegf23/nginx-profile`, where:
+    * `olegf23:nginx-profile-01` - name of your image
+    * `olegf23/nginx-profile` - name of your repo
+10. Push your image `docker push olegf23/nginx-profile`
+
