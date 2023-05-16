@@ -51,7 +51,9 @@ Containainerization is an improved concept of VM, where it doesn't require an OS
 ![Docker structure](resources/docker_structure.JPG)
 
 `Docker pull` - it pulls an image from the DockerHub registry to our local repository so it can be accessed quicker
+
 `Docker build` - it builds an image localy
+
 `Docker run` - it checks if the image is available locally, if not it will pull it from the registry, and then it will build it and run it
 
 
