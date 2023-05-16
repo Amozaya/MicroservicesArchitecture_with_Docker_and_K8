@@ -92,6 +92,8 @@ Once container is running you can go to the `localhost` page in your browser to 
 18. Refresh the browser to see a new h1 heading
 
 
+
+
 ### Create a profile page on Nginx and push it to DockerHub
 
 1. Create a new `index.html` file. Change `<body>` to have some paragraph about you.
@@ -107,3 +109,82 @@ Once container is running you can go to the `localhost` page in your browser to 
     * `olegf23/nginx-profile` - name of your repo
 10. Push your image `docker push olegf23/nginx-profile`
 
+
+You can use `docker rmi <image_name>:<tag> -f` - to remove the image from local repo.
+
+## Automate the process with Dockerfile
+
+1. Create a new `Dockerfile`, preferrably in your project folder
+2. Write a provisioning script:
+```
+# base image Nginx
+FROM nginx
+
+# who is the owner/creater
+LABEL MAINTAINER=olegf23
+
+# copy index.html to usr/share/nginx/html
+COPY index.html /usr/share/nginx/html/
+
+# port 80
+EXPOSE 80
+
+# execute command run
+CMD ["nginx", "-g", "daemon off;"]
+
+# docker build
+# docker images to confirm the name
+# docker run
+# docker ps as well as localhost
+```
+
+3. `docker build -t olegf23/tech221-nginx:v1 .` - build the image from Docker file, where:
+    * `-t` - adding tag
+    * `olegf23/tech221-nginx` - name of repo
+    * `v1` - tag
+    * `.` - directions to `Dockerfile`, in this case it means it's in the same folder
+
+4. `docker images` - to check if image was created
+5. `docker run -d -p 80:80 olegf23/tech221-nginx:v1` - to run the container
+6. Check `localhost` if it's running
+7. `docker push olegf23/tech221-nginx:v1` - push image to DockerHub
+
+
+## Create a Sparta App image
+1. Copy `app` to your project folder
+2. Open `Dockerfile` and edit the script:
+```
+# base image Nginx
+FROM node:16
+
+# who is the owner/creater
+LABEL MAINTAINER=olegf23
+
+# Create app directory
+WORKDIR /app
+
+# copy app to the container app directory
+COPY app/ .
+
+# port 3000
+EXPOSE 3000
+
+# install the app
+RUN npm install
+
+# execute command run
+CMD ["node", "app.js"]
+
+# docker build
+# docker images to confirm the name
+# docker run
+# docker ps as well as localhost
+```
+
+3. `docker build -t olegf23/tech221-app:v1 .` - build the image from Docker file
+4. `docker images` - to check if image was created
+5. `docker run -d -p 80:3000 olegf23/tech221-app:v1` - to run the container
+6. Check `localhost` if it's running. The Sparta App should be displayed
+7. `docker push olegf23/tech221-nginx:v1` - push image to DockerHub
+
+![Sparta App](resources/docker_app.JPG)
